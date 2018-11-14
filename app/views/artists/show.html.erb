@@ -1,0 +1,24 @@
+div class ="container artist">
+	<div class= "row">
+		<div class="col-sm-12">
+			<header>
+				<h1> <%= @artist.name %></h1>
+				<img src = "<%= @artist.image_url %>"><br>
+				<%= link_to 'Artistas', artists_path %>
+				<%= link_to 'Añadir album', new_artist_album_path(@artist.id) %>
+
+			</header>
+			<div class="album-list">
+				<% @artist.albums.each do |album| %>
+					<div class = "album-item">
+						<img src = "<%= album.image_url %>", alt="album">
+						<h4><%= album.name %></h4>
+						<h4><%= album.released_at %></h4>
+						<%= link_to 'Borrar de tu lista', artist_album_path(@artist.id),method: :delete %>
+
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
